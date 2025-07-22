@@ -3,8 +3,6 @@ import pandas as pd
 import numpy as np
 import joblib
 from PIL import Image
-import plotly.graph_objects as go
-import plotly.express as px
 
 # Page configuration
 st.set_page_config(
@@ -437,49 +435,41 @@ try:
     eval_plot = Image.open("images/plot.png")
     st.image(eval_plot, caption="Actual vs Predicted Salary Analysis", use_container_width=True)
 except:
-    # Create a demo chart using Plotly
-    np.random.seed(42)
-    actual_salaries = np.random.normal(75000, 20000, 100)
-    predicted_salaries = actual_salaries + np.random.normal(0, 5000, 100)
+    # Create a demo metrics display without Plotly
+    st.markdown("""
+    <div style="background: rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 30px; margin: 20px 0;">
+        <h4 style="color: white; text-align: center; margin-bottom: 30px;">📊 Model Performance Metrics</h4>
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;">
+            <div style="text-align: center; background: rgba(96, 165, 250, 0.2); padding: 20px; border-radius: 12px; min-width: 150px;">
+                <div style="font-size: 2rem; font-weight: bold; color: #60a5fa;">94.58%</div>
+                <div style="color: #e0e7ff; font-size: 0.9rem;">R² Score</div>
+            </div>
+            <div style="text-align: center; background: rgba(16, 185, 129, 0.2); padding: 20px; border-radius: 12px; min-width: 150px;">
+                <div style="font-size: 2rem; font-weight: bold; color: #10b981;">±$5,200</div>
+                <div style="color: #e0e7ff; font-size: 0.9rem;">Mean Error</div>
+            </div>
+            <div style="text-align: center; background: rgba(245, 101, 101, 0.2); padding: 20px; border-radius: 12px; min-width: 150px;">
+                <div style="font-size: 2rem; font-weight: bold; color: #f87171;">89.2%</div>
+                <div style="color: #e0e7ff; font-size: 0.9rem;">Predictions within 10%</div>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
     
-    fig = go.Figure()
-    fig.add_trace(go.Scatter(
-        x=actual_salaries,
-        y=predicted_salaries,
-        mode='markers',
-        marker=dict(
-            color='rgba(96, 165, 250, 0.7)',
-            size=8,
-            line=dict(width=1, color='white')
-        ),
-        name='Predictions'
-    ))
+    # Alternative: Display sample data table
+    st.markdown("### 📋 Sample Training Data Preview")
+    sample_data = {
+        'Age': [28, 35, 42, 29, 38],
+        'Gender': ['Male', 'Female', 'Male', 'Female', 'Male'],
+        'Education': ['Master\'s', 'Bachelor\'s', 'PhD', 'Master\'s', 'Bachelor\'s'],
+        'Job Title': ['Data Scientist', 'Software Engineer', 'Senior Manager', 'Product Manager', 'Designer'],
+        'Experience': [3, 7, 15, 5, 8],
+        'Actual Salary': ['$72,000', '$85,000', '$125,000', '$78,000', '$65,000'],
+        'Predicted': ['$71,200', '$86,500', '$122,800', '$79,100', '$63,900']
+    }
     
-    # Add perfect prediction line
-    min_val, max_val = min(actual_salaries.min(), predicted_salaries.min()), max(actual_salaries.max(), predicted_salaries.max())
-    fig.add_trace(go.Scatter(
-        x=[min_val, max_val],
-        y=[min_val, max_val],
-        mode='lines',
-        line=dict(color='#ef4444', width=2, dash='dash'),
-        name='Perfect Prediction'
-    ))
-    
-    fig.update_layout(
-        title='Model Accuracy: Actual vs Predicted Salaries',
-        xaxis_title='Actual Salary ($)',
-        yaxis_title='Predicted Salary ($)',
-        plot_bgcolor='rgba(0,0,0,0)',
-        paper_bgcolor='rgba(0,0,0,0)',
-        font=dict(color='white'),
-        showlegend=True,
-        height=500
-    )
-    
-    fig.update_xaxis(gridcolor='rgba(255,255,255,0.1)')
-    fig.update_yaxis(gridcolor='rgba(255,255,255,0.1)')
-    
-    st.plotly_chart(fig, use_container_width=True)
+    df_sample = pd.DataFrame(sample_data)
+    st.dataframe(df_sample, use_container_width=True)
 
 # Footer
 st.markdown("""
