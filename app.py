@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load trained model
-model = joblib.load("model_lightgbm_v2.pkl")
+model = joblib.load("model_lightgbm.pkl")
 
 st.set_page_config(page_title="Employee Salary Estimator", layout="centered")
 
