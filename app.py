@@ -46,7 +46,6 @@ st.markdown("""
 
 # --- Sidebar ---
 with st.sidebar:
-    st.image("https://github.com/AdityaK-27/employee-salary-predictor/blob/main/Profile_Photo.jpg", width=100)
     st.title("Employee Salary Predictor")
     
     # Model performance metrics first
