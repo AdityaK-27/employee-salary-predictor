@@ -48,6 +48,17 @@ st.markdown("""
 with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/3135/3135715.png", width=100)
     st.title("Employee Salary Predictor")
+
+    # Model performance shown first
+    st.subheader("Model Performance")
+    st.write(f"**Model:** `{model.__class__.__name__}`")
+    st.metric("MAE", f"{abs(y_test - y_pred).mean():,.2f}")
+    st.metric("MSE", f"{(y_test - y_pred).pow(2).mean():,.2f}")
+    st.metric("R²", f"{model.score(X_test, y_test):.4f}")
+
+    st.markdown("---")
+
+    # Then explanation
     st.markdown("""
     This application estimates employee salaries based on:
     - Age  
@@ -56,16 +67,10 @@ with st.sidebar:
     - Job Title  
     - Years of Experience  
     """)
-    st.markdown("---")
-    st.subheader("Model Performance")
-    st.write(f"**Model:** `{model.__class__.__name__}`")
-    st.metric("MAE", f"{abs(y_test - y_pred).mean():,.2f}")
-    st.metric("MSE", f"{(y_test - y_pred).pow(2).mean():,.2f}")
-    st.metric("R²", f"{model.score(X_test, y_test):.4f}")
 
 # --- Title ---
 st.markdown("<h1 style='text-align:center;'>Employee Salary Predictor</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align:center; color:#6c757d;'>Estimate salaries using a trained regression model</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align:center; color:#6c757d;'>Estimate salaries using a trained Regression Model</p>", unsafe_allow_html=True)
 st.markdown("<hr style='border: 1px solid #dee2e6;'>", unsafe_allow_html=True)
 
 # --- Form for Input ---
