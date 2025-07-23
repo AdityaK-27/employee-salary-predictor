@@ -52,6 +52,7 @@ with st.sidebar:
     st.write(f"**Mean Absolute Error (MAE):** {abs(y_test - y_pred).mean():,.2f}")
     st.write(f"**Mean Squared Error (MSE):** {(y_test - y_pred).pow(2).mean():,.2f}")
     st.write(f"**R-squared (R²):** {model.score(X_test, y_test):.4f}")
+    st.markdown("---")
     st.markdown("""
     AI-powered salary estimation tool based on:
     - Age
@@ -63,7 +64,7 @@ with st.sidebar:
 
 
 # --- Title ---
-st.markdown("<h1 style='text-align:center;'>Employee Salary Predictor</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center;'>💼 Employee Salary Predictor</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align:center; color:#6c757d;'>Estimate salaries using a trained Regression Model</p>", unsafe_allow_html=True)
 st.markdown("<hr style='border: 1px solid #dee2e6;'>", unsafe_allow_html=True)
 
