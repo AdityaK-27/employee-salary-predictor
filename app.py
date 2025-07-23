@@ -48,7 +48,7 @@ st.markdown("""
 with st.sidebar:
     st.title("💼 Employee Salary Predictor")
     st.subheader("Model Performance")
-    st.write(f"**Selected Model:** {model.__class__.__name__}")
+    st.write(f"**Model:** {model.__class__.__name__}")
     st.write(f"**Mean Absolute Error (MAE):** {abs(y_test - y_pred).mean():,.2f}")
     st.write(f"**Mean Squared Error (MSE):** {(y_test - y_pred).pow(2).mean():,.2f}")
     st.write(f"**R-squared (R²):** {model.score(X_test, y_test):.4f}")
