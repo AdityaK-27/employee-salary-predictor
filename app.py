@@ -95,13 +95,14 @@ st.header("Enter Employee Details")
 col1, col2 = st.columns(2)
 
 with col1:
-    age = st.slider("Age", 18, 65, 30)
-    gender = st.radio("Gender", ["Male", "Female"])
-    education = st.radio("Education Level", ["Bachelor's", "Master's", "PhD"])
+    age = st.number_input("Age", min_value=18, max_value=65, value=30, step=1)
+    gender = st.selectbox("Gender", ["Male", "Female"])
+    education = st.selectbox("Education Level", ["Bachelor's", "Master's", "PhD"])
 
 with col2:
     job = st.selectbox("Job Title", original_data["Job Title"].unique())
-    exp = st.slider("Years of Experience", 0, 50, 5)
+    exp = st.number_input("Years of Experience", min_value=0, max_value=50, value=5, step=1)
+
 
 # --- Validations ---
 if exp >= age or exp > (age - 20) or age < (exp + 18):
