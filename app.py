@@ -46,26 +46,19 @@ st.markdown("""
 
 # --- Sidebar ---
 with st.sidebar:
-    st.title("Employee Salary Predictor")
-    
-    # Model performance metrics first
-    st.markdown("---")
+    st.title("💼 Employee Salary Predictor")
     st.subheader("Model Performance")
-    st.write(f"**Model:** `{model.__class__.__name__}`")
-    st.metric("MAE", f"{abs(y_test - y_pred).mean():,.2f}")
-    st.metric("MSE", f"{(y_test - y_pred).pow(2).mean():,.2f}")
-    st.metric("R²", f"{model.score(X_test, y_test):.4f}")
-
-    
-    st.markdown("---")
-    # Model info
+    st.write(f"**Selected Model:** {model.__class__.__name__}")
+    st.write(f"**Mean Absolute Error (MAE):** {abs(y_test - y_pred).mean():,.2f}")
+    st.write(f"**Mean Squared Error (MSE):** {(y_test - y_pred).pow(2).mean():,.2f}")
+    st.write(f"**R-squared (R²):** {model.score(X_test, y_test):.4f}")
     st.markdown("""
-    This application estimates employee salaries based on:
-    - Age  
-    - Gender  
-    - Education Level  
-    - Job Title  
-    - Years of Experience  
+    AI-powered salary estimation tool based on:
+    - Age
+    - Gender
+    - Education Level
+    - Job Title
+    - Years of Experience
     """)
 
 
