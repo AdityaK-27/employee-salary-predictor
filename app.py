@@ -49,7 +49,23 @@ with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/3135/3135715.png", width=100)
     st.title("Employee Salary Predictor")
 
-    # Model performance shown first
+    # Inject CSS to resize metric numbers
+    st.markdown("""
+        <style>
+        /* Reduce size of metric value and label */
+        div[data-testid="metric-container"] {
+            font-size: 14px !important;
+        }
+        div[data-testid="metric-container"] > div {
+            font-size: 14px !important;
+        }
+        div[data-testid="metric-container"] span {
+            font-size: 16px !important;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+    # Model performance metrics first
     st.subheader("Model Performance")
     st.write(f"**Model:** `{model.__class__.__name__}`")
     st.metric("MAE", f"{abs(y_test - y_pred).mean():,.2f}")
@@ -58,7 +74,7 @@ with st.sidebar:
 
     st.markdown("---")
 
-    # Then explanation
+    # Model info
     st.markdown("""
     This application estimates employee salaries based on:
     - Age  
@@ -67,6 +83,7 @@ with st.sidebar:
     - Job Title  
     - Years of Experience  
     """)
+
 
 # --- Title ---
 st.markdown("<h1 style='text-align:center;'>Employee Salary Predictor</h1>", unsafe_allow_html=True)
