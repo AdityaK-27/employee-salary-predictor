@@ -48,32 +48,17 @@ st.markdown("""
 with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/3135/3135715.png", width=100)
     st.title("Employee Salary Predictor")
-
-    # Inject CSS to resize metric numbers
-    st.markdown("""
-        <style>
-        /* Reduce size of metric value and label */
-        div[data-testid="metric-container"] {
-            font-size: 14px !important;
-        }
-        div[data-testid="metric-container"] > div {
-            font-size: 14px !important;
-        }
-        div[data-testid="metric-container"] span {
-            font-size: 16px !important;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-
+    
     # Model performance metrics first
+    st.markdown("---")
     st.subheader("Model Performance")
     st.write(f"**Model:** `{model.__class__.__name__}`")
     st.metric("MAE", f"{abs(y_test - y_pred).mean():,.2f}")
     st.metric("MSE", f"{(y_test - y_pred).pow(2).mean():,.2f}")
     st.metric("R²", f"{model.score(X_test, y_test):.4f}")
 
+    
     st.markdown("---")
-
     # Model info
     st.markdown("""
     This application estimates employee salaries based on:
