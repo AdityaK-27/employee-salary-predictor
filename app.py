@@ -49,10 +49,10 @@ with st.sidebar:
     st.title("💼 Employee Salary Predictor")
     st.markdown("---")
     st.subheader("Model Performance")
-    st.write(f"**Model:** {model.__class__.__name__}")
-    st.write(f"**Mean Absolute Error (MAE):** {abs(y_test - y_pred).mean():,.2f}")
-    st.write(f"**Mean Squared Error (MSE):** {(y_test - y_pred).pow(2).mean():,.2f}")
-    st.write(f"**R-squared (R²):** {model.score(X_test, y_test):.4f}")
+    st.write(f"**- Model:** {model.__class__.__name__}")
+    st.write(f"**- Mean Absolute Error (MAE):** {abs(y_test - y_pred).mean():,.2f}")
+    st.write(f"**- Mean Squared Error (MSE):** {(y_test - y_pred).pow(2).mean():,.2f}")
+    st.write(f"**- R-squared (R²):** {model.score(X_test, y_test):.4f}")
     st.markdown("---")
     st.markdown("""
     AI-powered salary estimation tool based on:
